@@ -1,0 +1,20 @@
+package &package&;
+
+import android.content.Context;
+
+import &mvp&.BasePresenter;
+import &mvp&.BaseView;
+/**
+* explin: 逻辑和UI交互的接口
+* auther:Administrator & feisher(458079442@qq.com)
+* create by 2018/5/15/015 17:14
+*/
+public class &Contract& {
+    interface View extends BaseView {
+        
+    }
+
+    interface  Presenter extends BasePresenter<View> {
+        
+    }
+}

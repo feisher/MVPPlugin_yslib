@@ -1,0 +1,22 @@
+package &package&;
+
+
+import &mvp&.MVPBaseActivity;
+
+/**
+* explin: 
+* auther:Administrator & feisher(458079442@qq.com)
+* create by 2018/5/15/015 17:10
+*/
+public class &Activity& extends MVPBaseActivity<&Contract&.View, &Presenter&> implements &Contract&.View {
+    @Override
+    public int layoutId() {
+      //TODO  请不要忘记添加 ： 清单文件映射 & 布局文件
+      return R.layout.layoutName;
+    }
+
+    @Override
+    public void initData() {
+
+    }
+}

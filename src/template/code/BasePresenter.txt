@@ -1,0 +1,11 @@
+package &package&;
+/**
+* explin:
+* auther:Administrator & feisher(458079442@qq.com)
+* create by 2018/5/15/015 17:10
+*/
+public interface  BasePresenter <V extends BaseView>{
+    void attachView(V view);
+
+    void detachView();
+}

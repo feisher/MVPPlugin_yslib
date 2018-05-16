@@ -1,0 +1,39 @@
+<idea-plugin>
+  <id>com.yusong.feisher.plugin.mvp1</id>
+  <name>MVPPlugin1_yslib</name>
+  <version>1.0</version>
+  <vendor email="458079442@qq.com" url="http://www.yusong.com.cn">浙江宇松科技股份有限公司</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="131"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>-->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="feisehr.mvpPlugin1" class="template.MVPPlugin1" text="feisehr.mvpPlugin1"
+            description="快速构建MVP架构，宇松yslib库专版">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="alt M"/>
+    </action>
+  </actions>
+
+</idea-plugin>

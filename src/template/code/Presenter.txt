@@ -1,0 +1,12 @@
+package &package&;
+
+import android.content.Context;
+import &mvp&.BasePresenterImpl;
+/**
+* explin:
+* auther:Administrator & feisher(458079442@qq.com)
+* create by 2018/5/15/015 17:15
+*/
+public class &Presenter& extends BasePresenterImpl<&Contract&.View> implements &Contract&.Presenter{
+    
+}

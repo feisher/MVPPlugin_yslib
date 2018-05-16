@@ -1,0 +1,75 @@
+package &package&;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+
+import java.lang.reflect.ParameterizedType;
+import android.view.View;
+
+/**
+* explin:
+* auther:Administrator & feisher(458079442@qq.com)
+* create by 2018/5/15/015 17:15
+*/
+public abstract class MVPBaseActivity<V extends BaseView,T extends BasePresenterImpl<V>> extends AppCompatActivity implements BaseView{
+    public T mPresenter;
+           public View decorView;
+       @Override
+       protected void onCreate(@Nullable Bundle savedInstanceState) {
+           super.onCreate(savedInstanceState);
+           mPresenter= getInstance(this,1);
+           mPresenter.attachView((V) this);
+           supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+           decorView = getWindow().getDecorView();
+           decorView.setFitsSystemWindows(true);
+           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                Window window = getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+           }
+           //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);// 横屏
+           setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏
+           if (layoutId() != 0) {
+                setContentView(layoutId());
+           }
+           //overridePendingTransition(R.anim.slide_in_from_right,R.anim.slide_out_to_right);
+           initView();
+           initData();
+           initListener();
+       }
+   
+       protected abstract int layoutId();
+       public void initView() {}
+       public abstract void initData();
+       public void initListener() {}
+
+       @Override
+       protected void onDestroy() {
+           super.onDestroy();
+           if (mPresenter!=null){
+               mPresenter.detachView();
+               mPresenter = null;
+           }
+       }
+   
+       @Override
+       public Context getContext(){
+           return this;
+       }
+   
+       public  <T> T getInstance(Object o, int i) {
+           try {
+               return ((Class<T>) ((ParameterizedType) (o.getClass().getGenericSuperclass())).getActualTypeArguments()[i]).newInstance();
+                   //如需要转化为kotlin代码，这里请 return  下方代码
+                   // ((o.javaClass.genericSuperclass as ParameterizedType).getActualTypeArguments()[i] as Class<T>).newInstance()
+           } catch (InstantiationException e) {
+               e.printStackTrace();
+           } catch (IllegalAccessException e) {
+               e.printStackTrace();
+           } catch (ClassCastException e) {
+               e.printStackTrace();
+           }
+           return null;
+       }
+}

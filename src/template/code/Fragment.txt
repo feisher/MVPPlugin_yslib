@@ -1,0 +1,14 @@
+package &package&;
+
+
+import &mvp&.MVPBaseFragment;
+
+/**
+* explin:
+* auther:Administrator & feisher(458079442@qq.com)
+* create by 2018/5/14/014 13:47
+*/
+
+public class &Fragment& extends MVPBaseFragment<&Contract&.View, &Presenter&> implements &Contract&.View {
+
+}

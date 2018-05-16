@@ -1,0 +1,28 @@
+package &package&;
+import android.content.Context;
+import java.lang.ref.WeakReference;
+import java.lang.ref.Reference;
+/**
+* explin:
+* auther:Administrator & feisher(458079442@qq.com)
+* create by 2018/5/15/015 17:10
+*/
+public class BasePresenterImpl<V extends BaseView> implements BasePresenter<V>{
+   protected V mView;
+   Context mContext;
+   Reference<V> viewRef;
+
+   @Override
+   public void attachView(V view) {
+       viewRef= new WeakReference<V>(view);
+       mView = (V) viewRef.get();
+       mContext = view.getContext();
+   }
+   @Override
+   public void detachView() {
+      if (viewRef != null) {
+          viewRef.clear();
+          viewRef = null;
+      }
+   }
+}
